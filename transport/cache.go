@@ -146,6 +146,8 @@ func (c *tlsTransportCache) get(config *Config) (http.RoundTripper, error) {
 
 // tlsConfigKey returns a unique key for tls.Config objects returned from TLSConfigFor
 func tlsConfigKey(c *Config) (tlsCacheKey, bool, error) {
+	return tlsCacheKey{}, false, nil
+
 	// Make sure ca/key/cert content is loaded
 	if err := loadTLSFiles(c); err != nil {
 		return tlsCacheKey{}, false, err
